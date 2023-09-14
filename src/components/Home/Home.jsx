@@ -5,6 +5,8 @@ const Home = () => {
     const [actors, setActors] = useState([]);
     const [selectedActor, setSelectedActor] = useState([]);
     const [totalCost, setTotalCost] = useState(0);
+    const [remaining, setRemaining] = useState(0);
+    const budget = 50000;
 
     useEffect(()=>{
         fetch('data.json')
@@ -18,13 +20,18 @@ const Home = () => {
         if(isAdded){
             return alert('Alread Added, Try Another One')
         } else {
-            setSelectedActor([...selectedActor, actor]);
             selectedActor.forEach(item => {
                 temp += item.salary;
-                
             });
         }
-        setTotalCost(temp);
+        const sum = budget - temp;
+        if(sum < 0){
+            return alert('Bhai Taka Shes');
+        }else{
+            setSelectedActor([...selectedActor, actor]);
+            setRemaining(sum);
+            setTotalCost(temp);
+        }
     }
 
     return (
@@ -59,6 +66,7 @@ const Home = () => {
                 <Cart
                 selectedActor={selectedActor}
                     totalCost={totalCost}
+                    remaining={remaining}
                 ></Cart>
             </div>
         </div>
