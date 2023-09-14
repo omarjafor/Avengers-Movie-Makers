@@ -7,7 +7,8 @@ const Cart = ({ selectedActor, totalCost, remaining }) => {
             {
                 selectedActor.map(actor => <li className="list-decimal text-left ml-5 font-bold my-2" key={actor.id}>{actor.name}</li>)
             }
-            <button className="rounded-xl px-4 py-2 my-3 font-bold text-lg bg-blue-400" >Complete</button>
+            <button onClick={() => window.location.reload(true)}
+            className="rounded-xl px-4 py-2 my-3 font-bold text-lg bg-blue-400" >Complete</button>
         </div>
     );
 };
