@@ -4,6 +4,7 @@ import Cart from "../Cart/Cart";
 const Home = () => {
     const [actors, setActors] = useState([]);
     const [selectedActor, setSelectedActor] = useState([]);
+    const [totalCost, setTotalCost] = useState(0);
 
     useEffect(()=>{
         fetch('data.json')
@@ -13,11 +14,17 @@ const Home = () => {
 
     const handleAddActor = actor => {
         const isAdded = selectedActor.find(act => act.id == actor.id)
+        let temp = actor?.salary;
         if(isAdded){
             return alert('Alread Added, Try Another One')
         } else {
-            setSelectedActor([...selectedActor, actor])
+            setSelectedActor([...selectedActor, actor]);
+            selectedActor.forEach(item => {
+                temp += item.salary;
+                
+            });
         }
+        setTotalCost(temp);
     }
 
     return (
@@ -48,9 +55,10 @@ const Home = () => {
                     }
                 </div>
             </div>
-            <div className="mt-16 w-1/4 border border-solid border-blue-500">
+            <div className="mt-16 w-1/4 px-2 border border-solid border-blue-500">
                 <Cart
                 selectedActor={selectedActor}
+                    totalCost={totalCost}
                 ></Cart>
             </div>
         </div>
