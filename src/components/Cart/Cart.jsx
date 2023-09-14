@@ -7,7 +7,7 @@ const Cart = ({ selectedActor }) => {
             {
                 selectedActor.map(actor => <li key={actor.id}>{actor.name}</li>)
             }
-            <button className="rounded-xl px-4 py-2 font-bold text-lg bg-blue-400" >Complete</button>
+            <button className="rounded-xl px-4 py-2 my-3 font-bold text-lg bg-blue-400" >Complete</button>
         </div>
     );
 };

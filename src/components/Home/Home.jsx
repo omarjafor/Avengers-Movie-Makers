@@ -12,7 +12,12 @@ const Home = () => {
     }, [])
 
     const handleAddActor = actor => {
-        setSelectedActor([...selectedActor, actor])
+        const isAdded = selectedActor.find(act => act.id == actor.id)
+        if(isAdded){
+            return alert('Alread Added, Try Another One')
+        } else {
+            setSelectedActor([...selectedActor, actor])
+        }
     }
 
     return (
