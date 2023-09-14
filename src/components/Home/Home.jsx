@@ -15,6 +15,19 @@ const Home = () => {
                     <div className="justify-center flex">
                         <img className="w-[80px] rounded-[50px]" src={actors[1].image} alt="" />
                     </div>
+                    <h2> {actors[1].name} </h2>
+                    <p>
+                        <small>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
+                        </small>
+                    </p>
+                    <div className="flex justify-around">
+                        <p>salary:{actors[1].salary} $</p>
+                        <p>{actors[1].role}</p>
+                    </div>
+                    <button
+                        className="w-full bg-[rgb(156, 137, 137) p-3 border border-solid border-transparent cursor-pointer]"
+                    >Select</button>
                 </div>
 
             </div>
