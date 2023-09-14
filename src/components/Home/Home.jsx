@@ -3,12 +3,18 @@ import Cart from "../Cart/Cart";
 
 const Home = () => {
     const [actors, setActors] = useState([]);
+    const [selectedActor, setSelectedActor] = useState([]);
 
     useEffect(()=>{
         fetch('data.json')
         .then(res => res.json())
         .then(data => setActors(data))
     }, [])
+
+    const handleAddActor = actor => {
+        setSelectedActor([...selectedActor, actor])
+    }
+
     return (
         <div className="flex">
             <div className="mx-10 w-[965px]">
@@ -30,6 +36,7 @@ const Home = () => {
                                 <p>{actor.role}</p>
                             </div>
                             <button
+                                onClick={() => handleAddActor(actor)}
                                 className="w-2/3 font-bold rounded-lg bg-blue-400 p-2 mt-1 text-black border border-solid border-transparent cursor-pointer]"
                             >Select</button>
                         </div>))
@@ -38,6 +45,7 @@ const Home = () => {
             </div>
             <div className="mt-16 w-1/4 border border-solid border-blue-500">
                 <Cart
+                selectedActor={selectedActor}
                 ></Cart>
             </div>
         </div>
